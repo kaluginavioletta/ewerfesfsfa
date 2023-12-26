@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Все товары/услуги</h2>
+
+    <div>
+        <form class="form form-search" method="get">
+            <input type="search" placeholder="Поиск" name="query">
+            <button type="submit">Поиск</button>
+        </form>
+    </div>
+
+  {% for product in product_requests %}
+
+    <div class="card" style="width: 22rem; margin: 23px;">
+        <img src="{{ product.product_img.url }}" alt="{{ product.product_img }}" class="card-img-top">
+      {% if products.image_design %}
+          <img src="{{ request.image_design.url }}" class="card-img-top">
+      {% endif %}
+      <div class="card-body">
+        <p class="card-text">Название: <a href="{% url 'polls:product_detail' product.id %}">{{ product.product_name }}</a></p>
+        <p class="card-text">Описание: {{ product.description_product }}</p>
+      </div>
+    </div>
+  {% empty %}
+    <p>Нет доступных товаров/услуг</p>
+  {% endfor %}
+    </form>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Мои заказы</h2>
+{% if orders %}
+<ul>
+    {% for order in orders %}
+    <p>Название: {{ order.product.product_name }}</p>
+    <p>Описание: {{ order.product.description_product }}</p>
+    <p>Фото: <img class="img" src="/media/{{ order.product.product_img }}"></p>
+    {% endfor %}
+</ul>
+{% else %}
+  <p>Нет моих заказов</p>
+{% endif %}
+{% endblock %}

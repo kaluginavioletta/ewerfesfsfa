@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Мои товары/услуги</h2>
+<div>
+    <form class="form form-search" method="get">
+        <input type="search" placeholder="Поиск" name="query">
+        <button type="submit">Поиск</button>
+    </form>
+</div>
+{% if results %}
+<ul>
+    {% for result in results %}
+    <p><a href="{% url 'polls:product' service.id %}">Название: {{ result.product_name }}</a></p>
+    <p>Описание: {{ result.description_product }}</p>
+    <p>Фото: <img class="img" src="/media/{{ result.product_img }}"></p>
+    {% endfor %}
+</ul>
+{% else %}
+  <p>Нет моих товаров/услуг</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}<title>Отдельный товар/услуга</title>{% endblock %}
+{% block content %}
+    <div>
+        <form class="form form-search" method="get">
+            <input type="search" placeholder="Поиск" name="query">
+            <button type="submit">Поиск</button>
+        </form>
+    </div>
+    <div>
+        <p>Название: {{product.product_name}}</p>
+        <p>Описание: {{product.description_product}}</p>
+        <p>Фото: <img class="img" src="/media/{{ product.product_img }}"></p>
+    </div>
+
+    <form method="post" action="{% url 'polls:product_detail' product.id %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Заказать товар/услугу">
+    </form>
+{% endblock %}

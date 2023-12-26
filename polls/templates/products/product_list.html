@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Мои товары/услуги</h2>
+{% if products_requests %}
+<ul>
+    {% for product in products_requests %}
+    <p><a href="{% url 'polls:product' product.id %}">Название: {{ product.product_name }}</a></p>
+    <p>Описание: {{ product.description_product }}</p>
+    <p>Фото: <img class="img" src="{{ product.product_img.url }}"></p>
+    {% endfor %}
+</ul>
+{% else %}
+  <p>Нет моих товаров/услуг</p>
+{% endif %}
+{% endblock %}

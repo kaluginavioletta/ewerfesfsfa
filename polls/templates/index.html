@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+{% if products_requests %}
+    {% for product in products_requests %}
+
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="/media/{{ product.product_img }}" alt="Card image cap">
+            <div class="card-body">
+                <h5>{{product.product_name}}</h5>
+                <p class="card-text">Описание: {{product.description_product}}</p>
+            </div>
+        </div>
+
+    {% endfor %}
+{% else %}
+<p>
+    Нет товаров/услуг!
+</p>
+{% endif %}
+{% endblock %}
